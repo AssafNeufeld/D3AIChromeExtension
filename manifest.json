@@ -1,0 +1,37 @@
+{
+  "name": "D3 Visualization for AppInsights",
+  "description": "D3 Visualization for AppInsights",
+  "version": "1",
+  "manifest_version": 2,
+  "permissions": [
+    "activeTab", "tabs","declarativeContent"
+  ],
+  "background": {
+    "scripts": ["scripts/background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_icon":  "images/favicon.png" ,
+    "default_popup": "popup.html"   
+  },
+  "content_scripts": [{
+    "run_at":     "document_end",
+    "matches": ["*.applicationinsights.io/subscriptions/*"],
+    "all_frames": true,
+    "css" : [ 
+      "css/bootstrap.min.css", 
+      "css/mystyle.css"
+    ],
+    "js":      
+    [ "scripts/jquery.3.3.1.min.js",
+      "scripts/bootstrap.bundle.js",
+      "scripts/d3.v3.js",
+      "scripts/content.js"          ]            
+    }],
+  "web_accessible_resources": [
+    "css/*",
+    "scripts/*",
+    "images/*",
+    "templates.html"
+  ]
+}
